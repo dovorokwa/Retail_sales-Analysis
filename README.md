@@ -75,6 +75,7 @@ select count(distinct category) as category from sales_analysis_tb
 
 -- My Analysis & Findings
 -- Q.1 Write a SQL query to retrieve all columns for sales made on '2022-11-05
+
 select *from sales_analysis_tb
 where sale_date = '2022-11-05'
 -- Q.2 Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 10 in the month of Nov-2022
@@ -87,6 +88,7 @@ WHERE category = 'Clothing'
 
 
 -- Q.3 Write a SQL query to calculate the total sales (total_sale) for each category.
+
 select category, sum(total_sale) as total_sale
 from sales_analysis_tb
 group By category
@@ -96,14 +98,18 @@ from sales_analysis_tb
 where
 category='Beauty'
 group by category
+
+
 -- Q.5 Write a SQL query to find all transactions where the total_sale is greater than 1000.
 select *from sales_analysis_tb
 where total_sale>1000
--- Q.6 Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
+**Q.6 Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
 select category, gender, count(transactions_id)as number_of_transactions
 from sales_analysis_tb
 group by category,gender
--- Q.7 Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
+
+
+**Q.7 Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
 SELECT*FROM(
 SELECT
     EXTRACT(YEAR FROM sale_date) AS sale_year,
