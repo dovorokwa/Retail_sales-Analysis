@@ -63,9 +63,9 @@ WHERE
     quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
 
 
-### 3. Data Analysis & Findings
+# 3. Data Analysis & Findings
 
---The following SQL queries were developed to answer specific business questions:
+##The following SQL queries were developed to answer specific business questions:
 
 select * from sales_analysis_tb
 select count(*) from sales_analysis_tb
@@ -73,13 +73,13 @@ select count(distinct customer_id) as total_sales from sales_analysis_tb
 select count(distinct category) as category from sales_analysis_tb
 -- Data Analysis & Business Key Problems & Answers
 
--- My Analysis & Findings
+###My Analysis & Findings
 -- Q.1 Write a SQL query to retrieve all columns for sales made on '2022-11-05
 
 select *from sales_analysis_tb
 where sale_date = '2022-11-05'
 
--- Q.2 Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 10 in the month of Nov-2022
+ ###Q.2 Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 10 in the month of Nov-2022
 SELECT
 *
 from sales_analysis_tb
@@ -88,7 +88,7 @@ WHERE category = 'Clothing'
   and quantity>=4
 
 
--- Q.3 Write a SQL query to calculate the total sales (total_sale) for each category.
+###Q.3 Write a SQL query to calculate the total sales (total_sale) for each category.
 
 select category, sum(total_sale) as total_sale
 from sales_analysis_tb
