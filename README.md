@@ -61,63 +61,61 @@ WHERE
     sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
     gender IS NULL OR age IS NULL OR category IS NULL OR 
     quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
-```
+
 
 ### 3. Data Analysis & Findings
 
 --The following SQL queries were developed to answer specific business questions:
-sql```
+
 select * from sales_analysis_tb
 select count(*) from sales_analysis_tb
 select count(distinct customer_id) as total_sales from sales_analysis_tb
 select count(distinct category) as category from sales_analysis_tb
 -- Data Analysis & Business Key Problems & Answers
-```sql
+
 -- My Analysis & Findings
 -- Q.1 Write a SQL query to retrieve all columns for sales made on '2022-11-05
-sql```
+
 select *from sales_analysis_tb
 where sale_date = '2022-11-05'
-```sql
+
 -- Q.2 Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 10 in the month of Nov-2022
-sql```
 SELECT
 *
 from sales_analysis_tb
 WHERE category = 'Clothing'
   AND sale_date BETWEEN '2022-11-01' AND '2022-11-30'
   and quantity>=4
-```sql
+
 
 -- Q.3 Write a SQL query to calculate the total sales (total_sale) for each category.
-sql```
+
 select category, sum(total_sale) as total_sale
 from sales_analysis_tb
 group By category
-```sql
+
 -- Q.4 Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.
-sql```
+
 select category, round(avg(age),2) as average_age
 from sales_analysis_tb
 where
 category='Beauty'
 group by category
-```sql
 
 -- Q.5 Write a SQL query to find all transactions where the total_sale is greater than 1000.
-sql```
+
 select *from sales_analysis_tb
 where total_sale>1000
-```sql
+
 **Q.6 Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
-sql```
+
 select category, gender, count(transactions_id)as number_of_transactions
 from sales_analysis_tb
 group by category,gender
-```sql
+
 
 **Q.7 Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
-sql```
+
 SELECT*FROM(
 SELECT
     EXTRACT(YEAR FROM sale_date) AS sale_year,
@@ -128,9 +126,9 @@ FROM sales_analysis_tb
 GROUP BY 1,2
 ) AS RANGINGS
 WHERE RANK = 1
-```sql
+
 -- Q.8 Write a SQL query to find the top 5 customers based on the highest total sales 
-sql```
+
 SELECT CUSTOMER_ID, SUM(TOTAL_SALE) AS TOTAL_SALE
 FROM SALES_ANALYSIS_TB
 GROUP BY CUSTOMER_ID
@@ -138,17 +136,15 @@ ORDER BY TOTAL_SALE DESC
 LIMIT(5)
 ```sql
 -- Q.9 Write a SQL query to find the number of unique customers who purchased items from each category.
-sql
-```
+
 SELECT  
 CATEGORY,
 COUNT(DISTINCT CUSTOMER_ID) AS UNIQUE_VALUES
 FROM SALES_ANALYSIS_TB
 GROUP BY 1
-```sql
+
 -- Q.10 Write a SQL query to create each shift and number of orders (Example Morning <=12, Afternoon Between 12 & 17, Evening >17)
-sql
-```
+
 WITH HOURLY_SALE AS(
 SELECT*,
 CASE
@@ -166,7 +162,7 @@ GROUP BY SHIFT
 ```sql
 --end of the project
 
-```
+```sql
 
 ## Findings
 
